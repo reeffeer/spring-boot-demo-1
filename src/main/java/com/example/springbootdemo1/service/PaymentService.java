@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 @Service
 public class PaymentService {
 
-    public PaymentDetails processPayment() {
-        throw new NotEnoughMoneyException();
+    public void processPayment(PaymentDetails paymentDetails) {
+        if (paymentDetails.getAmount() <= 0 || paymentDetails == null) {
+            throw new NotEnoughMoneyException();
+        }
     }
 }
